@@ -4,7 +4,7 @@ class SantasHelpers() {
 
     fun createMap(): MutableMap<String, List<String>> {
         val santasElfs: MutableMap<String, List<String>> = mutableMapOf(
-            "Santa" to listOf("Glader", "Butter"),
+            "Santa" to listOf("Tröger", "Trötter", "Blyger", "Dammråttan", "Skumtomten", "Glader", "Butter", "Rådjuret", "Nyckelpigan", "Haren", "Räven", "Gråsuggan", "Myran", "Bladlusen"),
             "Glader" to listOf("Tröger", "Trötter", "Blyger"),
             "Butter" to listOf("Rådjuret", "Nyckelpigan", "Haren", "Räven"),
             "Trötter" to listOf("Skummtomten"),
@@ -16,11 +16,7 @@ class SantasHelpers() {
     }
 
 
-    fun getUnderlings(
-        currentName: String,
-        result: MutableList<String>,
-        santasElfs: MutableMap<String, List<String>>
-    ): Any {
+    fun getUnderlings(currentName: String, result: MutableList<String>, santasElfs: MutableMap<String, List<String>>): Any {
         tailrec fun workingElfs(resultList: MutableList<String>, index: Int) {
             if (index == resultList.size) return
             santasElfs[currentName]?.let { underlings ->
@@ -31,6 +27,7 @@ class SantasHelpers() {
         santasElfs[currentName]?.let { result.addAll(it)}
         return workingElfs(result, 0)
     }
+
 }
 
 
