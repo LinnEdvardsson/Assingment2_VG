@@ -9,7 +9,10 @@ class SantasHelpersTest {
     @Test
     fun ` test createMap`() {
         val expectedMap = mutableMapOf(
-            "Santa" to listOf("Tröger", "Trötter", "Blyger", "Dammråttan", "Skumtomten", "Glader", "Butter", "Rådjuret", "Nyckelpigan", "Haren", "Räven", "Gråsuggan", "Myran", "Bladlusen"),
+            "Santa" to listOf(
+                "Tröger", "Trötter", "Blyger", "Dammråttan", "Skumtomten", "Glader",
+                "Butter", "Rådjuret", "Nyckelpigan", "Haren", "Räven", "Gråsuggan", "Myran", "Bladlusen"
+            ),
             "Glader" to listOf("Tröger", "Trötter", "Blyger"),
             "Butter" to listOf("Rådjuret", "Nyckelpigan", "Haren", "Räven"),
             "Trötter" to listOf("Skummtomten"),
@@ -25,8 +28,10 @@ class SantasHelpersTest {
     fun `getUnderlings Santa`() {
         val result = mutableListOf<String>()
         santasHelper.getUnderlings("Santa", result, santasElfs)
-        val expectedUnderlings = listOf(
-            "Tröger", "Trötter", "Blyger", "Dammråttan", "Skumtomten", "Glader", "Butter", "Rådjuret", "Nyckelpigan", "Haren", "Räven", "Gråsuggan", "Myran", "Bladlusen")
+        val expectedUnderlings = listOf("Tröger", "Trötter", "Blyger", "Dammråttan",
+            "Skumtomten", "Glader", "Butter", "Rådjuret", "Nyckelpigan", "Haren",
+            "Räven","Gråsuggan", "Myran", "Bladlusen"
+        )
         assertEquals(expectedUnderlings, result)
     }
 
@@ -38,22 +43,23 @@ class SantasHelpersTest {
         assertEquals(expectedUnderlings, result)
     }
 
-        @Test
-        fun `getUnderlings Butter`() {
-            val result = mutableListOf<String>()
-            santasHelper.getUnderlings("Butter", result, santasElfs)
-            val expectedUnderlings = listOf(
-                "Rådjuret", "Nyckelpigan", "Haren", "Räven")
-            assertEquals(expectedUnderlings, result)
-        }
+    @Test
+    fun `getUnderlings Butter`() {
+        val result = mutableListOf<String>()
+        santasHelper.getUnderlings("Butter", result, santasElfs)
+        val expectedUnderlings = listOf(
+            "Rådjuret", "Nyckelpigan", "Haren", "Räven"
+        )
+        assertEquals(expectedUnderlings, result)
+    }
 
-        @Test
-        fun `getUnderlings Trötter`() {
-            val result = mutableListOf<String>()
-            santasHelper.getUnderlings("Trötter", result, santasElfs)
-            val expectedUnderLings = listOf("Skummtomten")
-            assertEquals(expectedUnderLings, result)
-        }
+    @Test
+    fun `getUnderlings Trötter`() {
+        val result = mutableListOf<String>()
+        santasHelper.getUnderlings("Trötter", result, santasElfs)
+        val expectedUnderLings = listOf("Skummtomten")
+        assertEquals(expectedUnderLings, result)
+    }
 
     @Test
     fun `getUnderlings Skummtomten `() {
@@ -62,6 +68,7 @@ class SantasHelpersTest {
         val expectedUnderLings = listOf("Dammråttan")
         assertEquals(expectedUnderLings, result)
     }
+
     @Test
     fun `getUnderlings Räven`() {
         val result = mutableListOf<String>()
@@ -69,6 +76,7 @@ class SantasHelpersTest {
         val expectedUnderLings = listOf("Gråsuggan", "Myran")
         assertEquals(expectedUnderLings, result)
     }
+
     @Test
     fun `getUnderlings Myran`() {
         val result = mutableListOf<String>()
@@ -77,5 +85,60 @@ class SantasHelpersTest {
         assertEquals(expectedUnderLings, result)
     }
 
-}
+    @Test
+    fun `getUnderlings Gråsuggan`() {
+        val result = mutableListOf<String>()
+        santasHelper.getUnderlings("Gråsuggan", result, santasElfs)
+        val expectedUnderLings = emptyList<String>()
+        assertEquals(expectedUnderLings, result)
+    }
 
+    @Test
+    fun `getUnderlings BladLusen`() {
+        val result = mutableListOf<String>()
+        santasHelper.getUnderlings("Bladlusen", result, santasElfs)
+        val expectedUnderLings = emptyList<String>()
+        assertEquals(expectedUnderLings, result)
+    }
+
+    @Test
+    fun `getUnderlings Nyckelpigan`() {
+        val result = mutableListOf<String>()
+        santasHelper.getUnderlings("Nyckelpigan", result, santasElfs)
+        val expectedUnderLings = emptyList<String>()
+        assertEquals(expectedUnderLings, result)
+    }
+
+    @Test
+    fun `getUnderlings Rådjuret`() {
+        val result = mutableListOf<String>()
+        santasHelper.getUnderlings("Rådjuret", result, santasElfs)
+        val expectedUnderLings = emptyList<String>()
+        assertEquals(expectedUnderLings, result)
+    }
+
+    @Test
+    fun `getUnderlings Dammråttan`() {
+        val result = mutableListOf<String>()
+        santasHelper.getUnderlings("Dammråttan", result, santasElfs)
+        val expectedUnderLings = emptyList<String>()
+        assertEquals(expectedUnderLings, result)
+    }
+
+    @Test
+    fun `getUnderlings Tröger`() {
+        val result = mutableListOf<String>()
+        santasHelper.getUnderlings("Tröger", result, santasElfs)
+        val expectedUnderLings = emptyList<String>()
+        assertEquals(expectedUnderLings, result)
+    }
+
+    @Test
+    fun `getUnderlings Blyger`() {
+        val result = mutableListOf<String>()
+        santasHelper.getUnderlings("Blyger", result, santasElfs)
+        val expectedUnderLings = emptyList<String>()
+        assertEquals(expectedUnderLings, result)
+    }
+
+}
