@@ -4,22 +4,7 @@ class SantasHelpers() {
 
     fun createMap(): MutableMap<String, List<String>> {
         val santasElfs: MutableMap<String, List<String>> = mutableMapOf(
-            "Santa" to listOf(
-                "Tröger",
-                "Trötter",
-                "Blyger",
-                "Dammråttan",
-                "Skumtomten",
-                "Glader",
-                "Butter",
-                "Rådjuret",
-                "Nyckelpigan",
-                "Haren",
-                "Räven",
-                "Gråsuggan",
-                "Myran",
-                "Bladlusen"
-            ),
+            "Santa" to listOf("Glader", "Butter"),
             "Glader" to listOf("Tröger", "Trötter", "Blyger"),
             "Butter" to listOf("Rådjuret", "Nyckelpigan", "Haren", "Räven"),
             "Trötter" to listOf("Skummtomten"),
@@ -36,22 +21,24 @@ class SantasHelpers() {
             if (index == result.size) return
             santasElfs[currentName]?.let { underlings ->                        // Hitta underlings för currentName från santasElfs
                 result.addAll(underlings.filterNot { it in result })           // Lägg till alla underlings i result, även underlings till underlings + undvika dubletter.
-                return workingElfs(result, index + 1)                 // Fortsätter rekursionen genom att öka index med 1, och gå igenom nästa nästa nyckel i result
+                return workingElfs(result, index + 1)                 // Fortsätter rekursionen genom att öka index med 1, och gå igenom nästa nästa nyckel i result.
             }
         }
         santasElfs[currentName]?.let { result.addAll(it) }               // Startar rekursionen, genom att lägga till de direkta underlings för currentName i resultatlistan
         return workingElfs(result, 0)
     }
 
+
+
 }
+
 
     fun main() {
         val santasHelper = SantasHelpers()
         val santasElfs = santasHelper.createMap()
         val result = mutableListOf<String>()
-        santasHelper.getUnderlings("Räven", result, santasElfs)
+        santasHelper.getUnderlings2("Glader", result, santasElfs)
         result.forEach(::println)
-
     }
 
 

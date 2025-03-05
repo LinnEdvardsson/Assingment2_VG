@@ -9,10 +9,7 @@ class SantasHelpersTest {
     @Test
     fun ` test createMap`() {
         val expectedMap = mutableMapOf(
-            "Santa" to listOf(
-                "Tröger", "Trötter", "Blyger", "Dammråttan", "Skumtomten", "Glader",
-                "Butter", "Rådjuret", "Nyckelpigan", "Haren", "Räven", "Gråsuggan", "Myran", "Bladlusen"
-            ),
+            "Santa" to listOf("Glader", "Butter"),
             "Glader" to listOf("Tröger", "Trötter", "Blyger"),
             "Butter" to listOf("Rådjuret", "Nyckelpigan", "Haren", "Räven"),
             "Trötter" to listOf("Skummtomten"),
@@ -28,9 +25,7 @@ class SantasHelpersTest {
     fun `getUnderlings Santa`() {
         val result = mutableListOf<String>()
         santasHelper.getUnderlings("Santa", result, santasElfs)
-        val expectedUnderlings = listOf("Tröger", "Trötter", "Blyger", "Dammråttan",
-            "Skumtomten", "Glader", "Butter", "Rådjuret", "Nyckelpigan", "Haren",
-            "Räven","Gråsuggan", "Myran", "Bladlusen"
+        val expectedUnderlings = listOf("Glader", "Butter"
         )
         assertEquals(expectedUnderlings, result)
     }
