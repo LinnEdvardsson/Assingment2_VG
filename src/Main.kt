@@ -16,21 +16,19 @@ class SantasHelpers() {
     }
 
 
-    fun getUnderlings(currentName: String, result: MutableList<String>, santasElfs: MutableMap<String, List<String>>): MutableList<String> {
-        fun getElfs(result: MutableList<String>) : MutableList<String> {
+    fun getUnderlings(currentName: String, result: MutableList<String> = mutableListOf(), santasElfs: MutableMap<String, List<String>>): MutableList<String> {
+         fun getElfs(currentName: String, result: MutableList<String>, index : Int) : MutableList<String> {
             santasElfs[currentName]?.let { underlings ->
-                underlings
-                    .forEach { elf ->
-                        result.add(elf)
-                        getUnderlings(elf, result, santasElfs)
-                    }
+                underlings.filterNot { it in result }.forEach { elf ->
+                    result.add(elf)
+                    getElfs(elf, result, index +1)
+                }
             }
             return result
         }
-        return getElfs(result)
+        return getElfs(currentName, result, 0)
     }
 }
-
 
     fun main() {
         val santasHelper = SantasHelpers()
@@ -40,4 +38,16 @@ class SantasHelpers() {
         result.forEach(::println)
     }
 
+
+//  fun getUnderlings1(currentName: String, result: MutableList<String>, santasElfs: MutableMap<String, List<String>>) {
+//        tailrec fun workingElfs(resultList: MutableList<String>, index: Int) {
+//            if (index == resultList.size) return
+//            santasElfs[currentName]?.let { underlings ->
+//                resultList.addAll(underlings.filterNot { it in resultList })
+//            }
+//            return workingElfs(resultList, index + 1)
+//        }
+//        santasElfs[currentName]?.let { result.addAll(it) }
+//        return workingElfs(result, 0)
+//    }
 
