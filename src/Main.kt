@@ -17,16 +17,16 @@ class SantasHelpers() {
 
 
     fun getUnderlings(currentName: String, result: MutableList<String> = mutableListOf(), santasElfs: MutableMap<String, List<String>>): MutableList<String> {
-         fun getElfs(currentName: String, result: MutableList<String>, index : Int) : MutableList<String> {
-            santasElfs[currentName]?.let { underlings ->
-                underlings.filterNot { it in result }.forEach { elf ->
+         fun getElfs(currentName: String, result: MutableList<String>) : MutableList<String> {
+            santasElfs[currentName]?.let { underlings ->                        //Hämtar currentName (nyckel) från map, om det inte är null så tas det emot i underlings.
+                underlings.filterNot { it in result }.forEach { elf ->             //Filtrerar bort alla elfs som finns i underlings och går igenom lista med result och lägger till de som inte finns.
                     result.add(elf)
-                    getElfs(elf, result, index +1)
+                    getElfs(elf, result)                          //Hämtar metod igen för att gå i igenom underlings för akutell elf "loopen" är på.
                 }
             }
-            return result
+            return result                                                           //När man gått igenom hela mappen, retuneras resultatet med alla elfs.
         }
-        return getElfs(currentName, result, 0)
+        return getElfs(currentName, result)                                 //hämta alla underlings för currentName, med listan med alla elfs
     }
 }
 
